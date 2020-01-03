@@ -1,7 +1,6 @@
 resource "aws_lb" "app_lb" {
   name = "app-lb"
   subnets = data.aws_subnet_ids.default.ids
-  enable_deletion_protection = true
   security_groups = [
     aws_security_group.public_web.id,
     data.aws_security_group.default.id

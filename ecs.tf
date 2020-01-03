@@ -24,6 +24,9 @@ resource "aws_ecs_service" "splunk-service" {
     container_name = "splunk_public_container"
     container_port = 5000
   }
+  depends_on = [
+    aws_lb.app_lb
+  ]
 }
 
 resource "aws_ecs_task_definition" "service" {
