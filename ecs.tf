@@ -1,6 +1,18 @@
+variable "ecr_repo_host" {
+  type = "string"
+  default = "381040904611.dkr.ecr.eu-central-1.amazonaws.com"
+}
+
+variable "splunk_repo_name" {
+  type = "string"
+  default = "splunk_server"
+}
+
 resource "aws_ecr_repository" "splunk_server" {
-  name = "splunk_server"
-  enable_deletion_protection = true
+  name = var.splunk_repo_name
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_ecs_cluster" "splunk_ecs" {
@@ -26,7 +38,7 @@ resource "aws_ecs_service" "splunk-service" {
 
 resource "aws_ecs_task_definition" "service" {
   family = "service"
-  container_definitions = file("task-definitions/service.json")
+  container_definitions = templatefile("task-definitions/service.json", {image: "${var.ecr_repo_host}/${var.splunk_repo_name}:latest"})
   network_mode = "awsvpc"
   memory = 512
   cpu = 256

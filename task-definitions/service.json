@@ -1,7 +1,7 @@
 [
   {
     "name": "splunk_public_container",
-    "image": "381040904611.dkr.ecr.eu-central-1.amazonaws.com/splunk_server:latest",
+    "image": "${image}",
     "portMappings": [
       {
           "containerPort": 5000
