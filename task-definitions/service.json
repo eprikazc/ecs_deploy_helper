@@ -6,6 +6,16 @@
       {
           "containerPort": 5000
       }
-    ]
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "awslogs-f1",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "awslogs-example",
+        "awslogs-create-group": "true"
+
+      }
+    }
   }
 ]

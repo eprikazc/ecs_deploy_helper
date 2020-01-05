@@ -24,7 +24,12 @@ resource "aws_ecs_service" "splunk-service" {
 
 resource "aws_ecs_task_definition" "service" {
   family = "service"
-  container_definitions = templatefile("task-definitions/service.json", {image: "${var.ecr_repo_host}/${var.splunk_repo_name}:latest"})
+  container_definitions = templatefile(
+    "task-definitions/service.json",
+    {
+      image: "${var.ecr_repo_host}/${var.splunk_repo_name}:latest",
+      region: var.region
+    })
   network_mode = "awsvpc"
   memory = 512
   cpu = 256
