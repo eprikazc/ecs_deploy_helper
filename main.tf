@@ -1,4 +1,4 @@
 provider "aws" {
-  region  = "eu-central-1"
+  region  = var.region
   profile = "eprikazc-tf"
 }

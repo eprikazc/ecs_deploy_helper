@@ -1,3 +1,8 @@
+variable "region" {
+  type = string
+  default = "eu-central-1"
+}
+
 variable "ecr_repo_host" {
   type = string
   default = "381040904611.dkr.ecr.eu-central-1.amazonaws.com"
