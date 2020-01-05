@@ -1,10 +1,3 @@
-resource "aws_ecr_repository" "splunk_server" {
-  name = var.splunk_repo_name
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
 resource "aws_ecs_cluster" "splunk_ecs" {
   name = "splunk"
 }
