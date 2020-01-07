@@ -16,6 +16,7 @@ resource "aws_lb_target_group" "splunk_public" {
   health_check {
     healthy_threshold = 2
     timeout = 5
+    path = "/health"
   }
 }
 
