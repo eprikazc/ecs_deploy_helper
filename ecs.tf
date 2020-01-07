@@ -42,3 +42,24 @@ resource "aws_ecs_task_definition" "service" {
   requires_compatibilities = ["FARGATE"]
   execution_role_arn = "arn:aws:iam::381040904611:role/ecsTaskExecutionRole"
 }
+
+resource "aws_ecs_task_definition" "django_migrate" {
+  family = "django_migrate"
+  container_definitions = templatefile(
+    "task-definitions/django_migrate.json",
+    {
+      image: "${var.ecr_repo_host}/${var.web_server_repo_name}:latest",
+      region: var.region,
+      web_server_port: var.web_server_port,
+      DB_NAME: var.DB_NAME,
+      DB_USER: var.DB_USER,
+      DB_PASSWORD: var.DB_PASSWORD,
+      DB_HOST: var.DB_HOST,
+      DB_PORT: var.DB_PORT
+    })
+  network_mode = "awsvpc"
+  memory = 512
+  cpu = 256
+  requires_compatibilities = ["FARGATE"]
+  execution_role_arn = "arn:aws:iam::381040904611:role/ecsTaskExecutionRole"
+}
