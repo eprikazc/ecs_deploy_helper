@@ -6,6 +6,7 @@ resource "aws_ecs_service" "web-server-service" {
   name = "web-server-service"
   cluster = aws_ecs_cluster.splunk_ecs.id
   task_definition = aws_ecs_task_definition.service.arn
+  deployment_maximum_percent = 300
   desired_count = 1
   launch_type = "FARGATE"
   network_configuration {
