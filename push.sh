@@ -1,14 +1,14 @@
 #! /bin/bash
 
 set -e
-export AWS_PROFILE=${AWS_PROFILE:-"ecs-deploy"}
-REPO=${REPO:-"381040904611.dkr.ecr.eu-central-1.amazonaws.com/sample-django-app"}
-BUILD_DIR=${BUILD:-"/home/eugene/dev/contracts/avanan/example_django_app"}
+export AWS_PROFILE=${DEPLOY_PROFILE:?"Required"}
+REPO=${TF_VAR_ecr_repo_host:?"Required"}/${TF_VAR_web_server_repo_name:?"Required"}
+BUILD_DIR=${BUILD_DIR:?"Required"}
 
-ECS_CLUSTER=${ECS_CLUSTER:-"arn:aws:ecs:eu-central-1:381040904611:cluster/splunk"}
-ECS_SERVICE=${ECS_SERVICE:-"arn:aws:ecs:eu-central-1:381040904611:service/web-server-service"}
-ECS_TASK_DEFINITION=${ECS_TASK_DEFINITION:-"arn:aws:ecs:eu-central-1:381040904611:task-definition/service"}
-SUBNETS=${SUBNETS:-'["subnet-426da63f", "subnet-7ded7d16", "subnet-dd3a8690"]'}
+ECS_CLUSTER=${ECS_CLUSTER:?"Required"}
+ECS_SERVICE=${ECS_SERVICE:?"Required"}
+ECS_TASK_DEFINITION=${ECS_TASK_DEFINITION:?"Required"}
+SUBNETS=${SUBNETS:?"Required"}
 
 while getopts "bdm" OPTION; do
     case $OPTION in
