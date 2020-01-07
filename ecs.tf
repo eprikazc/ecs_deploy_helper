@@ -2,8 +2,8 @@ resource "aws_ecs_cluster" "splunk_ecs" {
   name = "splunk"
 }
 
-resource "aws_ecs_service" "splunk-service" {
-  name = "splunk-service"
+resource "aws_ecs_service" "web-server-service" {
+  name = "web-server-service"
   cluster = aws_ecs_cluster.splunk_ecs.id
   task_definition = aws_ecs_task_definition.service.arn
   desired_count = 1
