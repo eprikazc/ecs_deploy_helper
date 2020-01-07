@@ -27,7 +27,7 @@ resource "aws_ecs_task_definition" "service" {
   container_definitions = templatefile(
     "task-definitions/service.json",
     {
-      image: "${var.ecr_repo_host}/${var.splunk_repo_name}:latest",
+      image: "${var.ecr_repo_host}/${var.web_server_repo_name}:latest",
       region: var.region,
       web_server_port: var.web_server_port
     })
