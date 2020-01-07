@@ -6,5 +6,7 @@ Usage:
 ```
 source .env
 terraform apply
-./push -b -d
+./push -b # Build new version of the app, and push it to ECR
+./push -m # Run task with migrations, if needed
+./push -d # Trigger app deployment
 ```
