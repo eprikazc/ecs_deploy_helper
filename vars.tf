@@ -17,6 +17,10 @@ variable "web_server_port" {
   type = number
 }
 
+variable "healtcheck_path" {
+  type = string
+}
+
 variable "DB_NAME" {
   type = string
 }
