@@ -5,6 +5,9 @@ variable "region" {
 variable "ecr_repo_host" {
   type = string
 }
+variable "execution_role_arn" {
+  type = string
+}
 
 variable "web_server_repo_name" {
   type = string

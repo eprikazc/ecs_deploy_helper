@@ -1,6 +1,6 @@
 [
   {
-    "name": "splunk_public_container",
+    "name": "web_app_container",
     "image": "${image}",
     "environment": [
       {"name": "DB_NAME", "value": "${DB_NAME}"},

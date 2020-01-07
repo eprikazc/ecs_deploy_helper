@@ -54,7 +54,7 @@ then
 {
   "containerOverrides": [
     {
-      "name": "splunk_public_container",
+      "name": "web_app_container",
       "command": ["python", "manage.py", "migrate"]
     }
   ]
