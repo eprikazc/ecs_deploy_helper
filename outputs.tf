@@ -11,5 +11,5 @@ output "service_arn" {
   value = aws_ecs_service.web_server.id
 }
 output "task_definition_arn" {
-  value = aws_ecs_task_definition.web_app.id
+  value = aws_ecs_task_definition.web_app.arn
 }
