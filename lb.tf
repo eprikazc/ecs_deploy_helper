@@ -9,10 +9,14 @@ resource "aws_lb" "app_lb" {
 
 resource "aws_lb_target_group" "splunk_public" {
   name = "splunk-public"
-  port = 5000
+  port = var.web_server_port
   target_type = "ip"
   protocol = "HTTP"
   vpc_id = data.aws_vpc.default.id
+  health_check {
+    healthy_threshold = 2
+    timeout = 5
+  }
 }
 
 resource "aws_lb_listener" "splunk_public" {

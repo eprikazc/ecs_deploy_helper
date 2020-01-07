@@ -15,7 +15,7 @@ resource "aws_ecs_service" "splunk-service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.splunk_public.arn
     container_name = "splunk_public_container"
-    container_port = 5000
+    container_port = var.web_server_port
   }
   depends_on = [
     aws_lb.app_lb
@@ -28,7 +28,8 @@ resource "aws_ecs_task_definition" "service" {
     "task-definitions/service.json",
     {
       image: "${var.ecr_repo_host}/${var.splunk_repo_name}:latest",
-      region: var.region
+      region: var.region,
+      web_server_port: var.web_server_port
     })
   network_mode = "awsvpc"
   memory = 512

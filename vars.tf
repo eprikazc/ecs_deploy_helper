@@ -12,3 +12,8 @@ variable "splunk_repo_name" {
   type = string
   default = "splunk_server"
 }
+
+variable "web_server_port" {
+  type = number
+  default = 8000
+}
