@@ -10,7 +10,7 @@ variable "ecr_repo_host" {
 
 variable "web_server_repo_name" {
   type = string
-  default = "splunk_server"
+  default = "sample-django-app"
 }
 
 variable "web_server_port" {
