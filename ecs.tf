@@ -24,7 +24,7 @@ resource "aws_ecs_service" "web_server" {
 }
 
 resource "aws_ecs_task_definition" "web_app" {
-  family = "service"
+  family = "web_app"
   container_definitions = templatefile(
     "task-definitions/service.json",
     {
